@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="PLATFORM" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.8 (2)" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app01" />
+            <option value="$PROJECT_DIR$/bag2" />
+            <option value="$PROJECT_DIR$/bag2/2d-gamedev" />
+            <option value="$PROJECT_DIR$/bag2/android-basics" />
+            <option value="$PROJECT_DIR$/bag2/droidinvaders" />
+            <option value="$PROJECT_DIR$/bag2/game-framework" />
+            <option value="$PROJECT_DIR$/bag2/gameframework" />
+            <option value="$PROJECT_DIR$/bag2/gl-3d" />
+            <option value="$PROJECT_DIR$/bag2/gl-advanced" />
+            <option value="$PROJECT_DIR$/bag2/gl-basics" />
+            <option value="$PROJECT_DIR$/bag2/jumper" />
+            <option value="$PROJECT_DIR$/bag2/mr-nom" />
+            <option value="$PROJECT_DIR$/bag2/ndk" />
+            <option value="$PROJECT_DIR$/bag3" />
+            <option value="$PROJECT_DIR$/bag3/ch02-helloworld" />
+            <option value="$PROJECT_DIR$/bag3/ch03-game-framework" />
+            <option value="$PROJECT_DIR$/bag3/ch04.0-android-basics" />
+            <option value="$PROJECT_DIR$/bag3/ch04.1-android-basics" />
+            <option value="$PROJECT_DIR$/bag3/ch06-mr-nom" />
+            <option value="$PROJECT_DIR$/bag3/ch07-gl-basics" />
+            <option value="$PROJECT_DIR$/bag3/ch08-2d-gamedev" />
+            <option value="$PROJECT_DIR$/bag3/ch09-jumper" />
+            <option value="$PROJECT_DIR$/bag3/ch10-gl-3d" />
+            <option value="$PROJECT_DIR$/bag3/ch11.0-gl-advanced" />
+            <option value="$PROJECT_DIR$/bag3/ch11.1-gl-advanced" />
+            <option value="$PROJECT_DIR$/bag3/ch12-droidinvaders" />
+            <option value="$PROJECT_DIR$/fullscreen" />
+            <option value="$PROJECT_DIR$/phanna" />
+            <option value="$PROJECT_DIR$/phanna/demo" />
+            <option value="$PROJECT_DIR$/phanna/gage" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
