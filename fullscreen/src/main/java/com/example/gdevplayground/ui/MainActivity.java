@@ -17,7 +17,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private ActivityItemAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private DividerItemDecoration divider;
 

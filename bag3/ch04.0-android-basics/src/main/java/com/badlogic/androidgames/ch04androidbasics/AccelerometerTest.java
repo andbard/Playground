@@ -1,7 +1,7 @@
 package com.badlogic.androidgames.ch04androidbasics;
 
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
