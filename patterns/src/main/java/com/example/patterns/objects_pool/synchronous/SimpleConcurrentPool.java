@@ -1,20 +1,21 @@
 package com.example.patterns.objects_pool.synchronous;
 
 import com.example.patterns.objects_pool.IObjectFactory;
+import com.example.patterns.objects_pool.IPool;
 
-import java.util.ArrayList;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class SimplePool<T> implements ISimplePool<T> {
+public class SimpleConcurrentPool<T> implements ISimplePool<T> {
 
     private IObjectFactory<T> factory;
-    private ArrayList<T> pool;
+    ConcurrentLinkedQueue<T> queue;
     private int capacity;
 
     /**
      * Get an unbound objects' pool
      * @param factory the factory providing the object's instances
      */
-    public SimplePool(IObjectFactory<T> factory) {
+    public SimpleConcurrentPool(IObjectFactory<T> factory) {
         this(factory, -1);
     }
 
@@ -23,12 +24,12 @@ public class SimplePool<T> implements ISimplePool<T> {
      * @param factory the factory providing the object's instances
      * @param capacity the pool capacity. For negative values an unbound pool is instantiated
      */
-    public SimplePool(IObjectFactory<T> factory, int capacity) {
+    public SimpleConcurrentPool(IObjectFactory<T> factory, int capacity) {
         this.factory = factory;
         if (capacity < 0) {
-            pool = new ArrayList<>();
+            queue = new ConcurrentLinkedQueue<>();
         } else {
-            pool = new ArrayList<>(capacity);
+            queue = new ConcurrentLinkedQueue<>();
         }
         this.capacity = capacity;
     }
@@ -36,18 +37,18 @@ public class SimplePool<T> implements ISimplePool<T> {
     @Override
     public T acquire() {
         T instance;
-        if (pool.isEmpty()) {
+        if (queue.isEmpty()) {
             instance = factory.newInstance();
         } else {
-            int lastPos = pool.size() - 1;
+            int lastPos = queue.size() - 1;
             if (lastPos < 0) {
                 System.out.println("*** negative position => pool.isEmpty() returned false but the computed last position index is " + lastPos + " => probably concurrent operations issue ***");
                 throw new RuntimeException("concurrency problem");
             }
             try {
-                instance = pool.remove(lastPos);
+                instance = queue.poll();
             } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("*** trying to access pool (of size: " + pool.size() + ") by index: " + lastPos + " ***");
+                System.out.println("*** trying to access pool (of size: " + queue.size() + ") by index: " + lastPos + " ***");
                 throw new RuntimeException("concurrency problem");
             }
 
@@ -61,8 +62,8 @@ public class SimplePool<T> implements ISimplePool<T> {
             System.out.println("*** trying to release a null object ***");
             throw new RuntimeException("trying to release a null object");
         }
-        if (capacity >= 0 && capacity > pool.size()) {
-            pool.add(object);
+        if (capacity >= 0 && capacity > queue.size()) {
+            queue.add(object);
         } else {
             System.out.println("release: pool is full, cannot add instance (that will be GC soon)");
         }

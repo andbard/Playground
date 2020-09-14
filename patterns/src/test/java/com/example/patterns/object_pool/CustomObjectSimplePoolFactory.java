@@ -1,13 +1,13 @@
 package com.example.patterns.object_pool;
 
-import com.example.patterns.objects_pool.synchronous.SimplePool;
+import com.example.patterns.objects_pool.IObjectFactory;
 
-class CustomObjectSimplePoolFactory implements SimplePool.PoolObjectFactory<CustomObject> {
+public class CustomObjectSimplePoolFactory implements IObjectFactory<CustomObject> {
 
     private int counter = 0;
     @Override
     public CustomObject newInstance() {
-        CustomObject instance = new CustomObject(counter, "counter = " + counter);
+        CustomObject instance = new CustomObject(counter, "new");
         counter++;
         return instance;
     }

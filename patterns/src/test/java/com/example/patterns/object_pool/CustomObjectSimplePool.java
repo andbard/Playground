@@ -8,6 +8,10 @@ class CustomObjectSimplePool extends SimplePool<CustomObject> {
         super(factory);
     }
 
+    public CustomObjectSimplePool(CustomObjectSimplePoolFactory factory, int capacity) {
+        super(factory, capacity);
+    }
+
     @Override
     public CustomObjectSimplePoolFactory getFactory() {
         return (CustomObjectSimplePoolFactory) super.getFactory();
