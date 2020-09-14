@@ -109,12 +109,13 @@ public class SimplePoolTest {
     }
 
     /**
-     * With a not thread safe data structure the following might happen:
+     * If the pool is not implemented using a not thread safe data structure, the following might happen:
      * - suppose we have a single capacity pool with an element
      * - user_i checks if pool is empty and gets false (=> there is an element that might be remove)
-     * - before user_i calls pool.remove (or because of the underlying pool data structure is not thread safe)
-     * user_j might check if pool is empty getting false. When user_j tries actually to call pool.remove
-     * this should fail since user_i already did it and the single capacity pool should now be empty
+     * - user_j access a copy of the pool on its processing cache (there is still an element, the empty check gets false also here)
+     * - user_i calls pool.remove
+     * - user_j calls pool.remove but it fails since user_i already did it and the single capacity pool should now be empty
+     * todo: at exception decrement the countDownLatch so this execution can conclude (with a failure)
      *
      * @throws InterruptedException
      */
@@ -136,6 +137,11 @@ public class SimplePoolTest {
 
     //---
 
+    /**
+     * The pool is implemented using a thread safe data structure.
+     *
+     * @throws InterruptedException
+     */
     @Test
     public void acquire_release_concurrently_on_single_capacity_thread_safe_pool() throws InterruptedException {
         CustomObjectSimpleConcurrentPool pool = new CustomObjectSimpleConcurrentPool(new CustomObjectSimplePoolFactory(), 1);
