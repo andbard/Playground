@@ -1,6 +1,6 @@
 package com.example.patterns.object_pool;
 
-import com.example.patterns.objects_pool.synchronous.SimpleConcurrentPool;
+import com.example.patterns.objects_pool.concurrent.SimpleConcurrentPool;
 
 public class CustomObjectSimpleConcurrentPool extends SimpleConcurrentPool<CustomObject> {
 

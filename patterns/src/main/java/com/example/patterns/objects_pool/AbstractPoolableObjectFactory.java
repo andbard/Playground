@@ -1,6 +1,4 @@
-package com.example.patterns.objects_pool.synchronous;
-
-import com.example.patterns.objects_pool.IPoolableObjectFactory;
+package com.example.patterns.objects_pool;
 
 public abstract class AbstractPoolableObjectFactory<T> implements IPoolableObjectFactory<T> {
 

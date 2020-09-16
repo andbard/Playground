@@ -1,6 +1,7 @@
 package com.example.patterns.objects_pool.synchronous;
 
 import com.example.patterns.objects_pool.IObjectFactory;
+import com.example.patterns.objects_pool.ISimplePool;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,7 @@
-package com.example.patterns.objects_pool.synchronous;
+package com.example.patterns.objects_pool.concurrent;
 
 import com.example.patterns.objects_pool.IObjectFactory;
-import com.example.patterns.objects_pool.IPool;
+import com.example.patterns.objects_pool.ISimplePool;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 

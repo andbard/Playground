@@ -1,4 +1,4 @@
-package com.example.patterns.objects_pool.synchronous;
+package com.example.patterns.objects_pool;
 
 import com.example.patterns.objects_pool.IPoolableObject;
 

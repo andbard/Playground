@@ -1,6 +1,4 @@
-package com.example.patterns.objects_pool.synchronous;
-
-import com.example.patterns.objects_pool.IPool;
+package com.example.patterns.objects_pool;
 
 import java.util.HashMap;
 import java.util.Map;
