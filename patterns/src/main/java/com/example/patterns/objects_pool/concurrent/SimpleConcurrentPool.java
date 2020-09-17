@@ -1,14 +1,15 @@
 package com.example.patterns.objects_pool.concurrent;
 
 import com.example.patterns.objects_pool.IObjectFactory;
-import com.example.patterns.objects_pool.ISimplePool;
+import com.example.patterns.objects_pool.IBasePool;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class SimpleConcurrentPool<T> implements ISimplePool<T> {
+public class SimpleConcurrentPool<T> implements IBasePool<T> {
 
     private IObjectFactory<T> factory;
     ConcurrentLinkedQueue<T> queue;
+
     private int capacity;
 
     /**
@@ -26,11 +27,7 @@ public class SimpleConcurrentPool<T> implements ISimplePool<T> {
      */
     public SimpleConcurrentPool(IObjectFactory<T> factory, int capacity) {
         this.factory = factory;
-        if (capacity < 0) {
-            queue = new ConcurrentLinkedQueue<>();
-        } else {
-            queue = new ConcurrentLinkedQueue<>();
-        }
+        queue = new ConcurrentLinkedQueue<>();
         this.capacity = capacity;
     }
 
@@ -42,16 +39,17 @@ public class SimpleConcurrentPool<T> implements ISimplePool<T> {
         } else {
             int lastPos = queue.size() - 1;
             if (lastPos < 0) {
+                // todo: cleanup and if necessary make acquire throw an exception
                 System.out.println("*** negative position => pool.isEmpty() returned false but the computed last position index is " + lastPos + " => probably concurrent operations issue ***");
                 throw new RuntimeException("concurrency problem");
             }
             try {
                 instance = queue.poll();
             } catch (ArrayIndexOutOfBoundsException e) {
+                // todo: cleanup and if necessary make acquire throw an exception
                 System.out.println("*** trying to access pool (of size: " + queue.size() + ") by index: " + lastPos + " ***");
                 throw new RuntimeException("concurrency problem");
             }
-
         }
         return instance;
     }
@@ -59,10 +57,11 @@ public class SimpleConcurrentPool<T> implements ISimplePool<T> {
     @Override
     public void release(T object) {
         if (object == null) {
+            // todo: cleanup
             System.out.println("*** trying to release a null object ***");
             throw new RuntimeException("trying to release a null object");
         }
-        if (capacity >= 0 && capacity > queue.size()) {
+        if (capacity < 0 || (capacity >= 0 && capacity > queue.size())) {
             queue.add(object);
         } else {
             System.out.println("release: pool is full, cannot add instance (that will be GC soon)");

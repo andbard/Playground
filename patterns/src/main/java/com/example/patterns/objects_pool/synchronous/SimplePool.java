@@ -1,11 +1,11 @@
 package com.example.patterns.objects_pool.synchronous;
 
 import com.example.patterns.objects_pool.IObjectFactory;
-import com.example.patterns.objects_pool.ISimplePool;
+import com.example.patterns.objects_pool.IBasePool;
 
 import java.util.ArrayList;
 
-public class SimplePool<T> implements ISimplePool<T> {
+public class SimplePool<T> implements IBasePool<T> {
 
     private IObjectFactory<T> factory;
     private ArrayList<T> pool;
@@ -59,10 +59,11 @@ public class SimplePool<T> implements ISimplePool<T> {
     @Override
     public void release(T object) {
         if (object == null) {
+            // todo: cleanup
             System.out.println("*** trying to release a null object ***");
             throw new RuntimeException("trying to release a null object");
         }
-        if (capacity >= 0 && capacity > pool.size()) {
+        if (capacity < 0 || capacity > pool.size()) {
             pool.add(object);
         } else {
             System.out.println("release: pool is full, cannot add instance (that will be GC soon)");

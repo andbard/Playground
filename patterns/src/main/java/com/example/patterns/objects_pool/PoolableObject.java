@@ -1,9 +1,21 @@
 package com.example.patterns.objects_pool;
 
-import com.example.patterns.objects_pool.IPoolableObject;
-
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * Wrapper class used within the {@link AbstractPoolableObjectFactory} and the
+ * {@link com.example.patterns.objects_pool.concurrent.AbstractPoolableObjectConcurrentPool},
+ * abstract implementations of {@link IObjectFactory} and {@link IPoolableObjectPool}
+ * backed up by {@link PoolableObject} wrapping instances.
+ * <br>
+ * The factory should returned a new wrapped object instance to the pool.
+ * <br>
+ * The pool should be able to track the instances usage.
+ * <br>
+ * The pool (its abstract implementation) should provide a method that the concrete classes
+ * should implement in order to clean/clear the wrapped instance.
+ * @param <T> the wrapped instance object
+ */
 public final class PoolableObject<T> implements IPoolableObject<T> {
 
     private final T object;
@@ -40,7 +52,7 @@ public final class PoolableObject<T> implements IPoolableObject<T> {
     }
 
     /* this method is package private because only the pool can set the related field */
-    void setStatus(Status status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -55,7 +67,7 @@ public final class PoolableObject<T> implements IPoolableObject<T> {
     }
 
     /* this method is package private because only the pool can set the related field */
-    void setLastAcquisitionTime(long millis) {
+    public void setLastAcquisitionTime(long millis) {
         this.lastAcquisitionTime = millis;
     }
 
@@ -64,12 +76,12 @@ public final class PoolableObject<T> implements IPoolableObject<T> {
         return acquisitionCount.get();
     }
 
-    void setAcquisitionCount(long acquisitionCount) {
+    public void setAcquisitionCount(long acquisitionCount) {
         this.acquisitionCount.set(acquisitionCount);
     }
 
     /* this method is package private because only the pool can set the related field */
-    void incrementAcquisitionCount() {
+    public void incrementAcquisitionCount() {
         this.acquisitionCount.incrementAndGet();
     }
 }
