@@ -2,6 +2,7 @@ package com.example.surfaceview.camerasync;
 
 import android.app.Activity;
 import android.hardware.Camera;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -68,8 +69,10 @@ public class SurfaceViewCameraSyncActivity extends Activity implements SurfaceHo
         // set a SurfaceHolder.Callback so we get notified when the underlying surface is created and destroyed
         surfaceHolder.addCallback(this);
 
-        // deprecated setting, but required on Android versions prior to 3.0
-        surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+            // deprecated setting, but required on Android versions prior to 3.0
+            surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        }
 
         jpegCallback = new android.hardware.Camera.PictureCallback() {
             public void onPictureTaken(byte[] data, Camera camera) {

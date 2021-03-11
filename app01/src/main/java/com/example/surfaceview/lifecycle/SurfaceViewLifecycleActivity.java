@@ -97,8 +97,6 @@ public class SurfaceViewLifecycleActivity extends AppCompatActivity {
 
         Note: For an example of having a thread start/stop on surface create/destory, see Grafika's Hardware scaler activity:
         https://github.com/google/grafika/blob/master/app/src/main/java/com/android/grafika/HardwareScalerActivity.java
-
-
         */
         if (isFinishing()) {
             Log.d(TAG, "onPause, isFinishing");
