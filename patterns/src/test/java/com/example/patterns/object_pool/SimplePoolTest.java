@@ -3,6 +3,8 @@ package com.example.patterns.object_pool;
 import com.example.patterns.objects_pool.IBasePool;
 import com.example.patterns.objects_pool.IPool;
 import com.example.patterns.objects_pool.IPoolableObjectPool;
+import com.example.patterns.objects_pool.concurrent.SimpleConcurrentPool;
+import com.example.patterns.objects_pool.synchronous.SimplePool;
 
 import org.junit.Test;
 
@@ -262,7 +264,13 @@ public class SimplePoolTest {
                 }
             }
             if (pool instanceof IBasePool) {
-                newInstanceCounter = ((CustomObjectSimpleConcurrentPool) pool).getFactory().getCounter();
+                if (pool instanceof SimpleConcurrentPool) {
+                    newInstanceCounter = ((CustomObjectSimpleConcurrentPool) pool).getFactory().getCounter();
+                } else if (pool instanceof SimplePool) {
+                    newInstanceCounter = ((CustomObjectSimplePool) pool).getFactory().getCounter();
+                } else {
+                    throw new RuntimeException("pool class: " + pool.getClass());
+                }
             } else if (pool instanceof IPoolableObjectPool) {
                 newInstanceCounter = ((CustomObjectPoolFactory) ((CustomObjectConcurrentPool) pool).getFactory()).getCounter();
             }
