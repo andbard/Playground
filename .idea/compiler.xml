@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.7">
       <module name="game-framework" target="1.7" />
-      <module name="patterns" target="1.7" />
+      <module name="Playground.app01" target="11" />
+      <module name="Playground.bag2.2d-gamedev" target="11" />
+      <module name="Playground.bag2.android-basics" target="11" />
+      <module name="Playground.bag2.droidinvaders" target="11" />
+      <module name="Playground.bag2.gameframework" target="11" />
+      <module name="Playground.bag2.gl-3d" target="11" />
+      <module name="Playground.bag2.gl-advanced" target="11" />
+      <module name="Playground.bag2.gl-basics" target="11" />
+      <module name="Playground.bag2.jumper" target="11" />
+      <module name="Playground.bag2.mr-nom" target="11" />
+      <module name="Playground.bag2.ndk" target="11" />
+      <module name="Playground.bag3.ch02-helloworld" target="11" />
+      <module name="Playground.bag3.ch03-game-framework" target="11" />
+      <module name="Playground.bag3.ch04.0-android-basics" target="11" />
+      <module name="Playground.bag3.ch04.1-android-basics" target="11" />
+      <module name="Playground.bag3.ch06-mr-nom" target="11" />
+      <module name="Playground.bag3.ch07-gl-basics" target="11" />
+      <module name="Playground.bag3.ch08-2d-gamedev" target="11" />
+      <module name="Playground.bag3.ch09-jumper" target="11" />
+      <module name="Playground.bag3.ch10-gl-3d" target="11" />
+      <module name="Playground.bag3.ch11.0-gl-advanced" target="11" />
+      <module name="Playground.bag3.ch11.1-gl-advanced" target="11" />
+      <module name="Playground.bag3.ch12-droidinvaders" target="11" />
+      <module name="Playground.fullscreen" target="11" />
+      <module name="Playground.phanna.demo" target="11" />
+      <module name="Playground.phanna.gage" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
