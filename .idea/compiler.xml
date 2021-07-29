@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="game-framework" target="1.7" />
+      <module name="patterns" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

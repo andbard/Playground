@@ -1,3 +1,4 @@
+include ':patterns'
 include 'phanna:gage'
 include 'phanna:demo'
 include 'bag3:ch12-droidinvaders'
